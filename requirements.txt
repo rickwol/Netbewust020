@@ -1,0 +1,7 @@
+streamlit == 1.37.1
+st-pages == 1.0.1
+pandas == 2.2.2
+numpy == 1.26.4
+folium == 0.19.5
+streamlit-folium == 0.24.0 
+
