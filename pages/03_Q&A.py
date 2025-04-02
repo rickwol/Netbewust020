@@ -2,6 +2,17 @@ import streamlit as st
 
 st.set_page_config(page_title=None, page_icon=None, initial_sidebar_state="auto", menu_items=None, layout="wide")
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #FFFFFF;  /* Replace with your desired color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.markdown("""
             <style>
             [data-testid="stSidebar"] {
