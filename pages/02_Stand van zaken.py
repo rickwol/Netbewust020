@@ -69,23 +69,31 @@ with col3:
     
     # Make an empty map
     
-    data = pd.read_csv("pages/Locaties.csv", sep=";")
-    m = folium.Map(location=[data.iloc[1]['Latitude'], data.iloc[1]['Longitude']], tiles="OpenStreetMap", zoom_start=10, prefer_canvas=True)
-    #st.dataframe(data)
-    data["colour"] = np.where(data["District"] == "Zuid", "Blue", "Red")
-    radius = 12
-    for i in range(0,len(data)):
-        folium.CircleMarker(
-        location=[data.iloc[i]['Latitude'], data.iloc[i]['Longitude']],
-        radius=radius,
-        fill=True,
-        fill_opacity=1,
-        color=data.iloc[i]['colour'],
-        popup=data.iloc[i]['Address'],
-           
-       ).add_to(m)
-    
-    folium_static(m, width=750, height=300)
+    def create_map():
+        if 'map' not in st.session_state or st.session_state.map is None : 
+            data = pd.read_csv("pages/Locaties.csv", sep=";")
+            m = folium.Map(location=[data.iloc[1]['Latitude'], data.iloc[1]['Longitude']], tiles="OpenStreetMap", zoom_start=12)
+        
+            data["colour"] = np.where(data["District"] == "Zuid", "Blue", "Red")
+            radius = 12
+            for i in range(0,len(data)):
+                 folium.CircleMarker(
+                  location=[data.iloc[i]['Latitude'], data.iloc[i]['Longitude']],
+                  radius=radius,
+                  fill=True,
+                  fill_opacity=1,
+                  color=data.iloc[i]['colour'],
+                  popup=data.iloc[i]['Address']).add_to(m)
+                    
+            st.session_state.map = m  # Save the map in the session state
+        return st.session_state.map
+
+
+    def show_map():
+       m = create_map()  # Get or create the map
+       folium_static(m)
+
+    show_map()  
 
 with col4:
     st.markdown('#')
