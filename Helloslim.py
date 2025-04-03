@@ -28,6 +28,7 @@ password = st.text_input("Password", type="password")
 
 if st.button("Log in", type="primary"):
     if username == "slimladen" and password == "Netbewust020!":
+        st.session_state["Login"]= True
         st.success("Logged in successfully!")
         sleep(0.5)
         st.switch_page("pages/01_Start.py")
