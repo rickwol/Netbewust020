@@ -1,5 +1,8 @@
 import streamlit as st
-if  st.session_state.Login is not None : 
+if  st.session_state.Login is None : 
+	st.switch_page("Helloslim.py") 
+else:
+		
 	st.set_page_config(page_title=None, page_icon=None, initial_sidebar_state="auto", menu_items=None, layout="wide")
 	
 	st.markdown(
@@ -105,5 +108,5 @@ if  st.session_state.Login is not None :
 	</div>
 	"""
 	st.markdown(footer,unsafe_allow_html=True)        
-else:
-	st.switch_page("Helloslim.py") 
+
+	
