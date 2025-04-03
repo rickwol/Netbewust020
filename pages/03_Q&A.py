@@ -120,10 +120,10 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<img src="https://www.theleansixsigmacompany.eu/wp-content/uploads/sites/30/equans-logo.png", height=100>
-<img src="https://www.liander.nl/assets/logo.png", height=100>
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Logo_of_Gemeente_Amsterdam.svg", height=100>
-<img src="https://zakelijkschrijven.nl/wp-content/uploads/2021/01/HvA-logo.png", height=100>
+<img src="https://www.theleansixsigmacompany.eu/wp-content/uploads/sites/30/equans-logo.png", height=60>
+<img src="https://www.liander.nl/assets/logo.png", height=60>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Logo_of_Gemeente_Amsterdam.svg", height=60>
+<img src="https://zakelijkschrijven.nl/wp-content/uploads/2021/01/HvA-logo.png", height=60>
 </div>
 """
 st.markdown(footer,unsafe_allow_html=True)        
