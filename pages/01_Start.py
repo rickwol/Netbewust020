@@ -77,36 +77,36 @@ else:
 	    st.markdown('#')
 	    
 	####Design footer        
-	footer="""<style>
-	a:link , a:visited{
-	color: blue;
-	background-color: transparent;
-	text-decoration: underline;
-	}
-	
-	a:hover,  a:active {
-	color: red;
-	background-color: transparent;
-	text-decoration: underline;
-	}
-	
-	.footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: white;
-	color: black;
-	text-align: center;
-	}
-	</style>
-	<div class="footer">
-	<img src="https://www.theleansixsigmacompany.eu/wp-content/uploads/sites/30/equans-logo.png", height=60>
-	<img src="https://www.liander.nl/assets/logo.png", height=60>
-	<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Logo_of_Gemeente_Amsterdam.svg", height=60>
-	<img src="https://zakelijkschrijven.nl/wp-content/uploads/2021/01/HvA-logo.png", height=60>
-	</div>
-	"""
-	st.markdown(footer,unsafe_allow_html=True)        
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<img src="https://www.theleansixsigmacompany.eu/wp-content/uploads/sites/30/equans-logo.png", height=60>
+<img src="https://www.liander.nl/assets/logo.png", height=60>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Logo_of_Gemeente_Amsterdam.svg", height=60>
+<img src="https://zakelijkschrijven.nl/wp-content/uploads/2021/01/HvA-logo.png", height=60>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)     	   
 
 	
