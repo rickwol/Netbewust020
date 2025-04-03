@@ -70,7 +70,7 @@ with col3:
     # Make an empty map
     
     data = pd.read_csv("pages/Locaties.csv", sep=";")
-    m = folium.Map(location=[data.iloc[1]['Latitude'], data.iloc[1]['Longitude']], tiles="OpenStreetMap", zoom_start=10)
+    m = folium.Map(location=[data.iloc[1]['Latitude'], data.iloc[1]['Longitude']], tiles="OpenStreetMap", zoom_start=10, prefer_canvas=True)
     #st.dataframe(data)
     data["colour"] = np.where(data["District"] == "Zuid", "Blue", "Red")
     radius = 12
