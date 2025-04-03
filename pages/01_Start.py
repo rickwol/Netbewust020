@@ -9,6 +9,12 @@ st.markdown(
         background-color: #FFFFFF;  /* Replace with your desired color */
         color: #000000;
     }
+    h1 {
+		color: #000000
+	}
+ 	h3 {
+		color: #000000
+	}
     </style>
     """,
     unsafe_allow_html=True
