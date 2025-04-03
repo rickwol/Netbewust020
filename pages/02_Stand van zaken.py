@@ -3,100 +3,102 @@ import pandas as pd
 import folium
 import numpy as np
 from streamlit_folium import st_folium, folium_static
-
-st.set_page_config(page_title=None, page_icon=None, initial_sidebar_state="auto", menu_items=None, layout="wide")
-
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: #FFFFFF;  /* Replace with your desired color */
-        color: #000000;
-    }
-    h1 {
-		color: #000000
-	}
- 	h3 {
-		color: #000000
-	}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
-st.markdown("""
-            <style>
-            [data-testid="stSidebar"] {
-                display: none
-            }
-
-            [data-testid="collapsedControl"] {
-                display: none
-            }
-            </style>
-            """, unsafe_allow_html=True)
-
-
-st.markdown("""
-    <style>
-        [data-testid="column"]:nth-child(1){
-            background-color: #a2cce9;
-            font-size: 20px;
-        }
-    </style>
-    """, unsafe_allow_html=True
-)
-
-col2, col3, col4, = st.columns([1.5,5,2])
-with col2:
-    st.markdown('#')
-    st.page_link("pages/01_Start.py", label="### **Start**", )
-    st.page_link("pages/02_Stand van zaken.py", label="### **Stand van zaken**")
-    st.page_link("pages/03_Q&A.py", label="### **Q&A**")
-
-with col3:
-    st.title("Stand van zaken")
-    
-    st.markdown("Momenteel zijn er 500 laadpalen actief met netbewust.")
-    st.markdown("Het project is in juni 2024 gelanceerd. Zie het persbericht rondom de lancering.", unsafe_allow_html=True)
-    st.markdown(f''' <a href = "https://www.liander.nl/over-ons/nieuws/2024/equans-en-liander-gaan-in-amsterdam-netbewust-laden-uitbreiden-naar-1000-laadpalen"> Link </a>''', unsafe_allow_html=True)
-    
-    st.subheader("Welke laadpalen doen mee aan netbewust laden")
-    
-    st.markdown("In onderstaande kaart kunt u zien welke laadpalen meedoen aan netbewust laden en welke laadpalen meedoen aan het programma Actief Slim laden", unsafe_allow_html=True)
-    
-    
-    # Make an empty map
-    
-    def create_map():
-        if 'map' not in st.session_state or st.session_state.map is None : 
-            data = pd.read_csv("pages/Locaties.csv", sep=";")
-            m = folium.Map(location=[data.iloc[1]['Latitude'], data.iloc[1]['Longitude']], tiles="OpenStreetMap", zoom_start=12)
-        
-            data["colour"] = np.where(data["District"] == "Zuid", "Blue", "Red")
-            radius = 12
-            for i in range(0,len(data)):
-                 folium.CircleMarker(
-                  location=[data.iloc[i]['Latitude'], data.iloc[i]['Longitude']],
-                  radius=radius,
-                  fill=True,
-                  fill_opacity=1,
-                  color=data.iloc[i]['colour'],
-                  popup=data.iloc[i]['Address']).add_to(m)
-                    
-            st.session_state.map = m  # Save the map in the session state
-        return st.session_state.map
-
-
-    def show_map():
-       m = create_map()  # Get or create the map
-       folium_static(m)
-
-    show_map()  
-
-with col4:
-    st.markdown('#')
+if  "Login" not in st.session_state : 
+	st.switch_page("Helloslim.py") 
+else:
+	st.set_page_config(page_title=None, page_icon=None, initial_sidebar_state="auto", menu_items=None, layout="wide")
+	
+	st.markdown(
+	    """
+	    <style>
+	    .stApp {
+	        background-color: #FFFFFF;  /* Replace with your desired color */
+	        color: #000000;
+	    }
+	    h1 {
+			color: #000000
+		}
+	 	h3 {
+			color: #000000
+		}
+	    </style>
+	    """,
+	    unsafe_allow_html=True
+	)
+	
+	
+	st.markdown("""
+	            <style>
+	            [data-testid="stSidebar"] {
+	                display: none
+	            }
+	
+	            [data-testid="collapsedControl"] {
+	                display: none
+	            }
+	            </style>
+	            """, unsafe_allow_html=True)
+	
+	
+	st.markdown("""
+	    <style>
+	        [data-testid="column"]:nth-child(1){
+	            background-color: #a2cce9;
+	            font-size: 20px;
+	        }
+	    </style>
+	    """, unsafe_allow_html=True
+	)
+	
+	col2, col3, col4, = st.columns([1.5,5,2])
+	with col2:
+	    st.markdown('#')
+	    st.page_link("pages/01_Start.py", label="### **Start**", )
+	    st.page_link("pages/02_Stand van zaken.py", label="### **Stand van zaken**")
+	    st.page_link("pages/03_Q&A.py", label="### **Q&A**")
+	
+	with col3:
+	    st.title("Stand van zaken")
+	    
+	    st.markdown("Momenteel zijn er 500 laadpalen actief met netbewust.")
+	    st.markdown("Het project is in juni 2024 gelanceerd. Zie het persbericht rondom de lancering.", unsafe_allow_html=True)
+	    st.markdown(f''' <a href = "https://www.liander.nl/over-ons/nieuws/2024/equans-en-liander-gaan-in-amsterdam-netbewust-laden-uitbreiden-naar-1000-laadpalen"> Link </a>''', unsafe_allow_html=True)
+	    
+	    st.subheader("Welke laadpalen doen mee aan netbewust laden")
+	    
+	    st.markdown("In onderstaande kaart kunt u zien welke laadpalen meedoen aan netbewust laden en welke laadpalen meedoen aan het programma Actief Slim laden", unsafe_allow_html=True)
+	    
+	    
+	    # Make an empty map
+	    
+	    def create_map():
+	        if 'map' not in st.session_state or st.session_state.map is None : 
+	            data = pd.read_csv("pages/Locaties.csv", sep=";")
+	            m = folium.Map(location=[data.iloc[1]['Latitude'], data.iloc[1]['Longitude']], tiles="OpenStreetMap", zoom_start=12)
+	        
+	            data["colour"] = np.where(data["District"] == "Zuid", "Blue", "Red")
+	            radius = 12
+	            for i in range(0,len(data)):
+	                 folium.CircleMarker(
+	                  location=[data.iloc[i]['Latitude'], data.iloc[i]['Longitude']],
+	                  radius=radius,
+	                  fill=True,
+	                  fill_opacity=1,
+	                  color=data.iloc[i]['colour'],
+	                  popup=data.iloc[i]['Address']).add_to(m)
+	                    
+	            st.session_state.map = m  # Save the map in the session state
+	        return st.session_state.map
+	
+	
+	    def show_map():
+	       m = create_map()  # Get or create the map
+	       folium_static(m)
+	
+	    show_map()  
+	
+	with col4:
+	    st.markdown('#')
 ####Design footer        
 footer="""<style>
 a:link , a:visited{
