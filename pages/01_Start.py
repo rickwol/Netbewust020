@@ -1,5 +1,5 @@
 import streamlit as st
-if  "Login" is not in st.session_state : 
+if  "Login" not in st.session_state : 
 	st.switch_page("Helloslim.py") 
 else:
 		
