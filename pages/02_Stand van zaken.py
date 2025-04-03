@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import folium
 import numpy as np
-from streamlit_folium import st_folium
+from streamlit_folium import st_folium, folium_static
 
 st.set_page_config(page_title=None, page_icon=None, initial_sidebar_state="auto", menu_items=None, layout="wide")
 
@@ -85,7 +85,7 @@ with col3:
            
        ).add_to(m)
     
-    st_folium(m, width=750, height=300)
+    folium_static(m, width=750, height=300)
 
 with col4:
     st.markdown('#')
